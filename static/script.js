@@ -1,4 +1,4 @@
-const socket = io('http://pingersocial.el.r.appspot.com/', { transport : ['websocket', 'polling', 'flashsocket'] })
+const socket = io('http://pingersocial.el.r.appspot.com/', { transports : ['websocket', 'polling', 'flashsocket'] })
 const messageform = document.getElementById('send-container');
 const messagecontainer = document.getElementById('message-container');
 const chatmsg = document.getElementById('message-input');
