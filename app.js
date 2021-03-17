@@ -5,7 +5,7 @@ const app = express()
 var hash = require('pbkdf2-password')()
 var session = require('express-session');
 // const functions = require("firebase-functions");
-var http = app.listen(5000)
+var http = app.listen(process.env.PORT)
 const io = require('socket.io')(http, {
   cors: {
     origin: "*",
