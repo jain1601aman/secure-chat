@@ -13,7 +13,7 @@ const io = require('socket.io')(http, {
 })
 
 app.use('/static',express.static('./static/'));
-app.set('views','./public')
+app.set('views','./views')
 app.set('view engine','ejs')
 app.use(express.urlencoded({extended:true}));
 app.use(session({
