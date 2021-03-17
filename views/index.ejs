@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      background-color: black;
+      text-align: center;
+    }
+    #message-container h1,h3{
+      text-align: center;
+      color: orangered;
+    }
+    #message-container {
+      width: 80%;
+      max-width: 1200px;
+    }
+    /*********************************************************************************************/
+    .form-inline {  
+     display: inline-block;
+     flex-flow: row wrap;
+     align-items: center;
+     
+    }
+
+    .form-inline label {
+     margin: 5px 10px 5px 0;
+     color: white;
+    }
+
+    .form-inline input {
+        -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+     border-radius: 20px;
+     border: 1px solid #2d9fd9;
+     color:white;
+     outline: none;
+     background-color: transparent;
+     padding-left: 10px;
+     height: 30px;
+    }
+
+    .form-inline button {
+        -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+     border-radius: 20px;
+     border: 1px solid #2d9fd9;
+     color:white;
+     background-color: transparent;
+     padding-left: 10px;
+     text-align: center;
+      width: 125px;
+      background-color:transparent;
+      height: 30px;
+      outline: none;
+    }
+    input[type=text]:focus {
+     outline: none;
+     border: 1px solid #a0d18c;
+     background-color: transparent;
+     color: #2d9fd9;
+    }
+    input[type=submit]:focus
+    {
+        outline: none;
+    }
+    @media (max-width: 800px) {
+    .form-inline input {
+        margin: 10px 0;
+    }
+    
+    .form-inline {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    }
+/***********************************************************************************************************/
+  </style>
+  
+</head>
+<body>
+  <div id="message-container">
+    <h1>Secure Chat</h1>
+    <h3>Create Room</h3>  
+    <form class="form-inline" action="/" method="post">
+        <label >Room ID:</label>
+        <input type="text" placeholder="Create Room" name="room" required> &nbsp;
+        <label for="pwd">Password:</label>
+        <input type="password" placeholder="Enter password" name="pswd" required>
+        <button type="submit">Submit</button>
+    </form>
+      <h3>Enter Room</h3> 
+      <form class="form-inline" action="/login" method="POST">
+        <label >Room ID:</label>
+        <input type="text" placeholder="Create Room" name="username" required> &nbsp;
+        <label for="pwd">Password:</label>
+        <input type="password" id="pwd" placeholder="Enter password" name="password" required>
+        <button type="submit">Login</button>
+      </form>  
+  </div>
+
+  </script>
+</body>
+</html>
