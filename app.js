@@ -49,6 +49,19 @@ hash({ password: 'foobar' }, function (err, pass, salt, hash) {
   userss.tj.hash = hash;
 });
 
+var removeByAttr = function(arr, attr, value){
+    var i = arr.length;
+    while(i--){
+       if( arr[i] 
+           && arr[i].hasOwnProperty(attr) 
+           && (arguments.length > 2 && arr[i][attr] === value ) ){ 
+
+           arr.splice(i,1);
+
+       }
+    }
+    return arr;
+}
 
 function restrict(req, res, next) {
   if (req.session.user) {
@@ -95,12 +108,11 @@ io.on('connection', socket =>{
         
       })
 socket.on('send-chat-message' , data =>{
-    console.log('encrypted data recived : ')
-    console.log(data)
     socket.broadcast.emit('send' , {user:usersss[socket.id],data:data})
 })
 socket.on('disconnect',()=>{
   delete usersss[socket.id]
+  removeByAttr(userdata, 'id', socket.id);
 })
 
 })
