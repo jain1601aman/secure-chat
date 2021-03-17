@@ -4,16 +4,16 @@ const express = require('express')
 const app = express()
 var hash = require('pbkdf2-password')()
 var session = require('express-session');
-const functions = require("firebase-functions");
-var http = require('http').createServer(app)
+// const functions = require("firebase-functions");
+var http = app.listen(5000)
 const io = require('socket.io')(http, {
   cors: {
     origin: "*",
   },
 })
 
-app.use(express.static('public'));
-app.set('views','../public')
+app.use('/static',express.static('./static/'));
+app.set('views','./public')
 app.set('view engine','ejs')
 app.use(express.urlencoded({extended:true}));
 app.use(session({
@@ -140,4 +140,4 @@ app.get('*/logout', function(req, res){
     res.redirect('/');
   });
 });
-exports.app = functions.https.onRequest(app);
+http
