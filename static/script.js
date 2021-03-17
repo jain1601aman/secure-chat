@@ -14,7 +14,7 @@ var keysize = 1024
 var crypt = new JSEncrypt({ default_key_size: keysize });
 var pubkey = crypt.getPublicKey()
 var privkey = crypt.getPrivateKey()
-// crypt.setPrivateKey(privkey);
+crypt.setPrivateKey(privkey);
 /**************************************************************************************************************/
 
 
@@ -34,10 +34,7 @@ messageform.addEventListener('submit' , e =>{
 function appendmessage(text)
 {
     var encrypted = text.data
-    console.log('encrypted data recived : ')
-    console.log(encrypted)
     const division = document.createElement('div');
-    crypt.setPrivateKey(privkey);
     const decrypted = crypt.decrypt(encrypted);
     const s = text.user +' : ' + decrypted
     division.className = "b";
