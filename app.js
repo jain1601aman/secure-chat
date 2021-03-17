@@ -95,7 +95,8 @@ io.on('connection', socket =>{
         
       })
 socket.on('send-chat-message' , data =>{
-  
+    console.log('encrypted data recived : ')
+    console.log(data)
     socket.broadcast.emit('send' , {user:usersss[socket.id],data:data})
 })
 socket.on('disconnect',()=>{
