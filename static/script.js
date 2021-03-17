@@ -1,4 +1,4 @@
-const socket = io('http://pingersocial.el.r.appspot.com/', { transport : ['websocket', 'polling'] })
+const socket = io('http://pingersocial.el.r.appspot.com/', { transports : ['websocket'] })
 const messageform = document.getElementById('send-container');
 const messagecontainer = document.getElementById('message-container');
 const chatmsg = document.getElementById('message-input');
@@ -34,6 +34,8 @@ messageform.addEventListener('submit' , e =>{
 function appendmessage(text)
 {
     var encrypted = text.data
+    console.log('encrypted data recived : ')
+    console.log(encrypted)
     const division = document.createElement('div');
     const decrypted = crypt.decrypt(encrypted);
     const s = text.user +' : ' + decrypted
