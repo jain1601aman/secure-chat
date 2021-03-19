@@ -8,8 +8,11 @@
   <title>Chat App</title>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.js"></script>
-  <script defer src="http://pingersocial.el.r.appspot.com/socket.io/socket.io.js"></script>
-  <script defer src="static/script.js"></script>
+  <script defer src="http://secure--chat.herokuapp.com/socket.io/socket.io.js"></script>
+  <script defer src="http://secure--chat.herokuapp.com/static/script.js"></script>
+  <script>
+    var roomid = "<%= rid %>"
+  </script>
   <style>
     body {
       padding: 0;
