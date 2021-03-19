@@ -5,7 +5,8 @@ const app = express()
 var hash = require('pbkdf2-password')()
 var session = require('express-session');
 var mongoose = require('mongoose')
-var http = app.listen(process.env.PORT ,'0.0.0.0')
+var port = process.env.PORT || 5000
+var http = app.listen(port)
 const io = require('socket.io')(http, {
   cors: {
     origin: "*",
