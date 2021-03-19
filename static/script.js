@@ -1,4 +1,4 @@
-const socket = io('http://pingersocial.el.r.appspot.com/', { transport : ['websocket'] })
+const socket = io('http://secure--chat.herokuapp.com/', { transport : ['websocket'] })
 const messageform = document.getElementById('send-container');
 const messagecontainer = document.getElementById('message-container');
 const chatmsg = document.getElementById('message-input');
@@ -20,7 +20,7 @@ crypt.setPrivateKey(privkey);
 
 const user = prompt('What is your name?')
 
-socket.emit('new-user', {name : user,pubkey:pubkey})
+socket.emit('new-user', roomid, {name : user,pubkey:pubkey})
 
 messageform.addEventListener('submit' , e =>{
     e.preventDefault()
@@ -56,7 +56,7 @@ function encrypting(pubkey1) {
         division.innerText = s;
         messagecontainer.appendChild(division);
         document.body.scrollIntoView(false);
-        socket.emit('send-chat-message', message);
+        socket.emit('send-chat-message', roomid , message);
     }
     
 };
