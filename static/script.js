@@ -10,7 +10,7 @@ socket.on('send' , data =>{
 
 
 /**************************************************************************************************************/
-var keysize = 1024
+var keysize = 2048
 var crypt = new JSEncrypt({ default_key_size: keysize });
 var pubkey = crypt.getPublicKey()
 var privkey = crypt.getPrivateKey()
