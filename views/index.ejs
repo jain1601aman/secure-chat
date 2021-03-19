@@ -81,6 +81,19 @@
         align-items: stretch;
     }
     }
+    #f {
+      width: auto;
+      background-color :transparent;
+      color :red;
+      padding: 5px;
+    }
+    #s {
+      width: auto;
+      background-color :transparent;
+      color :green;
+      padding: 5px;
+    }
+    
 /***********************************************************************************************************/
   </style>
   
@@ -88,10 +101,11 @@
 <body>
   <div id="message-container">
     <h1>Secure Chat</h1>
-    <h3>Create Room</h3>  
-    <form class="form-inline" action="/" method="post">
+    <h3>Create Room</h3>
+    <p id="<%=id%>"><%= createroommessge %></p>  
+    <form class="form-inline" action="/newroom" method="post">
         <label >Room ID:</label>
-        <input type="text" placeholder="Create Room" name="room" required> &nbsp;
+        <input type="text" placeholder="Create Room ID" name="room" required> &nbsp;
         <label for="pwd">Password:</label>
         <input type="password" placeholder="Enter password" name="pswd" required>
         <button type="submit">Submit</button>
@@ -99,7 +113,7 @@
       <h3>Enter Room</h3> 
       <form class="form-inline" action="/login" method="POST">
         <label >Room ID:</label>
-        <input type="text" placeholder="Create Room" name="username" required> &nbsp;
+        <input type="text" placeholder="Enter Room ID" name="username" required> &nbsp;
         <label for="pwd">Password:</label>
         <input type="password" id="pwd" placeholder="Enter password" name="password" required>
         <button type="submit">Login</button>
