@@ -6,7 +6,7 @@ var hash = require('pbkdf2-password')()
 var session = require('express-session');
 var mongoose = require('mongoose')
 var port = process.env.PORT || 5000
-var http = app.listen(port , '0.0.0.0')
+var http = app.listen(port ,'0.0.0.0')
 const io = require('socket.io')(http, {
   cors: {
     origin: "*",
@@ -46,18 +46,6 @@ app.use(function(req, res, next){
 });
 
 function debug() { console.log('yaha aayaa')}
-// // dummy database
-
-
-// // when you create a user, generate a salt
-// // and hash the password ('foobar' is the pass here)
-
-// hash({ password: 'foobar' }, function (err, pass, salt, hash) {
-//   if (err) throw err;
-//   // store the salt & hash in the "db"
-//   userss.tj.salt = salt;
-//   userss.tj.hash = hash;
-// });
 
 var removeByAttr = function(arr, attr, value){
     var i = arr.length;
@@ -133,36 +121,46 @@ io.on('connection', socket =>{
         newuser.save()
       usersss[socket.id] = user.name
       })
-      socket.on('get-key' , user =>{
+      socket.on('get-key' , (room,user) =>{
+        roomdb = mongoose.model(room, roomdbs);
         roomdb.find((err,userdata)=>{
           if(err) throw err
-          var i = 0;
-          var x = userdata[i]
-          if(x.name==user)
-          {
-            i=1
-          }
-          x = userdata[i]
-          socket.emit('take-key',x.pubkey)
+          var arr =[]
+          
+          userdata.forEach(element => {
+            if(!(element.name==user))
+            {
+              arr.push(element)
+            }
+          });
+          socket.emit('take-key',arr)
         })
       })
 socket.on('send-chat-message' , (room,data) =>{
     socket.to(room).broadcast.emit('send' , {user:usersss[socket.id],data:data})
 })
-socket.on('disconnect',()=>{
+socket.on('disconnect',async ()=>{
   roomdb.deleteOne({socketid:socket.id} ,(err)=>{
     if(err) throw err
   })
-  roomdb.find((err,userdb)=>{
+  var flag = false
+  await roomdb.find((err,userdb)=>{
     if(err) throw err
     if(userdb.length === 0)
     {
       roomdb.collection.drop()
-      rooms.deleteOne({roomid:dbroom} , (err)=>{
-        if(err) throw err
-      })
+      flag = true
     }
   })
+  if(flag)
+  {
+    
+    rooms.deleteOne({roomid:dbroom} , (err)=>
+    {
+      if(err) throw err
+    })
+  }
+  // deleteroom(roomdb)
   delete usersss[socket.id]
   removeByAttr(userdata, 'id', socket.id);
 })
@@ -231,4 +229,5 @@ app.post('*/newroom',  function(req,res){
     }
   })
 })
+
 http
