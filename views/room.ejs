@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Chat App</title>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/2.3.1/jsencrypt.js"></script>
+    <script defer src="http://localhost:5000/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/hmac-sha256.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/enc-base64.min.js"></script>
+    <script defer src="http://localhost:5000/static/script.js"></script>
+    <script>
+        var roomid = "<%= rid %>"
+    </script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            background-color: black;
+        }
+        
+        #message-container h2 {
+            text-align: center;
+            color: orangered;
+        }
+        
+        #message-container {
+            width: 80%;
+            max-width: 1200px;
+        }
+        
+        #message-container div.a {
+            width: auto;
+            background-color: transparent;
+            color: dodgerblue;
+            padding: 5px;
+            text-align: right;
+        }
+        
+        #message-container div.b {
+            color: teal;
+            background-color: transparent;
+            text-align: left;
+            padding: 5px;
+            width: auto;
+        }
+        
+        #message-container div.f {
+            color: red;
+            background-color: transparent;
+            text-align: center;
+            padding: 5px;
+            width: auto;
+        }
+        
+        #send-container {
+            position: fixed;
+            padding-bottom: 30px;
+            bottom: 0;
+            background-color: transparent;
+            max-width: 1200px;
+            width: 80%;
+            display: flex;
+            height: auto;
+        }
+        
+        #message-input {
+            flex-grow: 1;
+        }
+        
+        input[type=text],
+        button[type=submit] {
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            border: 1px solid #2d9fd9;
+            color: white;
+            background-color: transparent;
+            padding-left: 10px;
+        }
+        
+        input[type=text]:focus {
+            outline: none;
+            border: 1px solid #a0d18c;
+            background-color: transparent;
+            color: #2d9fd9;
+        }
+        
+        #send-button {
+            text-align: center;
+            width: 125px;
+            background-color: transparent;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="message-container">
+        <h2>Secure Chat</h2>
+    </div>
+    <form id="send-container">
+        <input type="text" id="message-input">
+        <br>
+        <button type="submit" id="send-button">Send</button>
+    </form>
+    <a href="/logout" style="color: white;">click to logout</a>
+
+</body>
+
+</html>
