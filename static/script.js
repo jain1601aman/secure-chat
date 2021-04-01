@@ -1,4 +1,4 @@
-const socket = io('http://secure--chat.herokuapp.com/', { transport: ['websocket'] })
+const socket = io('https://secure--chat.herokuapp.com/', { transport: ['websocket'] })
 const messageform = document.getElementById('send-container');
 const messagecontainer = document.getElementById('message-container');
 const chatmsg = document.getElementById('message-input');
