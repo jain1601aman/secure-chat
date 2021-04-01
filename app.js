@@ -1,7 +1,7 @@
 // var crypto = require('')
 global.navigator = { appName: 'nodejs' }; // fake the navigator object
 global.window = {}; // fake the window object
-const JSEncrypt = require('JSEncrypt/bin/jsencrypt');
+const JSEncrypt = require('jsencrypt/bin/jsencrypt');
 const path = require('path');
 const express = require('express')
 const app = express()
